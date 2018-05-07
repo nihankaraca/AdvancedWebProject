@@ -1,3 +1,7 @@
+<?php
+  include_once 'db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +27,20 @@
     <link href="css/my-style.css" rel="stylesheet">
 
   </head>
-
   <body id="page-top">
-
     <div class="login-page">
       <div class="form">
         <form class="register-form">
+          <?php
+            $sql = "SELECT * FROM users;";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows();
+            if (resultCheck > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+                echo $row['ID'];
+              }
+            }
+          ?>
           <input type="text" placeholder="name"/>
           <input type="password" placeholder="password"/>
           <input type="text" placeholder="email address"/>
@@ -43,7 +55,6 @@
         </form>
       </div>
     </div>
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
