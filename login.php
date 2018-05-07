@@ -1,7 +1,3 @@
-<?php
-  include_once 'db.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,45 +8,35 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Book Sumaries</title>
+    <title>Book Summaries</title>
 
     <!-- Bootstrap Core CSS -->
-    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet"> -->
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <!-- <link href="css/stylish-portfolio.min.css" rel="stylesheet"> -->
-    <link href="css/my-style.css" rel="stylesheet">
+     <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="css/my-stylish-portfolio.css" rel="stylesheet">
 
   </head>
   <body id="page-top">
     <div class="login-page">
       <div class="form">
-        <form class="register-form">
-          <?php
-            $sql = "SELECT * FROM users;";
-            $result = mysqli_query($conn, $sql);
-            $resultCheck = mysqli_num_rows();
-            if (resultCheck > 0) {
-              while($row = mysqli_fetch_assoc($result)) {
-                echo $row['ID'];
-              }
-            }
-          ?>
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
-          <button>create</button>
+        <form class="register-form" action="inc/register.php" method="post">
+          <input type="text" name="username" placeholder="name"/>
+          <input type="password" name="password" placeholder="password"/>
+          <input type="text" name="email" placeholder="email address"/>
+          <button type="submit" name="create">create</button>
           <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
-        <form class="login-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="password"/>
-          <button>login</button>
+        <form class="login-form" action="inc/login.php" method="post">
+          <input type="text" name="username" placeholder="username"/>
+          <input type="password" name="password" placeholder="password"/>
+          <button type="submit" name="login">login</button>
           <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>
       </div>
